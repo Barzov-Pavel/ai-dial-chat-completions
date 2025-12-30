@@ -27,7 +27,6 @@ async def start(stream: bool) -> None:
         conversation.add_message(Message(Role.USER, user_input))
         print("AI:")
         ai_message = await custom_client.stream_completion(conversation.get_messages()) if stream else custom_client.get_completion(conversation.get_messages())
-        print(ai_message.content)
         conversation.add_message(ai_message)
 
 asyncio.run(start(True))
